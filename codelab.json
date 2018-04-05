@@ -1,0 +1,34 @@
+{
+  "environment": "web",
+  "source": "1zq0qMUsCSr5dyz3_o1TMwqhdv8G3Ur1MlRduMXqIWww",
+  "format": "html",
+  "prefix": "../../",
+  "mainga": "UA-49880327-14",
+  "updated": "2018-04-05T10:20:57Z",
+  "id": "your-first-pwapp",
+  "duration": 0,
+  "title": "Automatyczne testy funkcjonalne na sterydach",
+  "author": "jaworj",
+  "summary": "Na tych warsztatach dowiesz się jak wzbogacić funkcjonalne testy automatyczne o walidację maili, walidacje wizualne oraz mierzenie wydajności.",
+  "theme": "web",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "Web"
+  ],
+  "tags": [
+    "cds17",
+    "chrome-dev-summit-2016",
+    "gdd17",
+    "io2016",
+    "io2017",
+    "kiosk",
+    "pwa-dev-summit",
+    "pwa-roadshow",
+    "typtwd17",
+    "web"
+  ],
+  "feedback": "https://github.com/googlecodelabs/your-first-pwapp/issues",
+  "url": "your-first-pwapp"
+}
