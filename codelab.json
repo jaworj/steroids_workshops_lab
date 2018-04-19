@@ -4,8 +4,8 @@
   "format": "html",
   "prefix": "../../",
   "mainga": "UA-49880327-14",
-  "updated": "2018-04-18T21:03:44Z",
-  "id": "selenium-on-steroids",
+  "updated": "2018-04-19T07:05:45Z",
+  "id": "your-first-pwapp",
   "duration": 0,
   "title": "Automatyczne testy funkcjonalne na sterydach",
   "author": "jaworj",
@@ -30,5 +30,5 @@
     "web"
   ],
   "feedback": "https://github.com/jaworj/steroids_workshops",
-  "url": "selenium-on-steroids"
+  "url": "your-first-pwapp"
 }
