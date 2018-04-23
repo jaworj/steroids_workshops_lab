@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <title>Automatyczne testy funkcjonalne na sterydach</title>
   <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-  <link rel="import" href="elements/codelab.html">
+  <link rel="import" href="../../elements/codelab.html">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <style is="custom-style">
     body {
@@ -125,6 +125,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode)</pre>
 <p>Pisanie testów Selenium dla statycznej strony jest bardzo proste, prawda? Czy w przypadku emaila wygląda to inaczej? Nie, jeśli używasz Inbucketa. </p>
 <p>Widok HTML w Inbuckecie pozwala na wyświetlenie emaila dokładnie tak samo, jak każdej innej statycznej strony. To znaczy, że jeśli używasz <a href="https://www.pluralsight.com/guides/software-engineering-best-practices/getting-started-with-page-object-pattern-for-your-selenium-tests" target="_blank">PageObjectPattern</a>, musisz utworzyć PageObject dla emaila, którego chcesz sprawdzić. Przykład? Plik JobAgentConfirmationEmailPage w warsztatowym repo. </p>
 <h2><strong>PARTY TIME!</strong></h2>
+<pre>Przełącz się na brancha EmailValidation</pre>
 <ol type="1" start="1">
 <li>W klasie <em>JobAgentConfirmationEmailPage.java </em>znajdziesz metodę <em>confirmEmailMessageFistep</em>, w której brakuje części odpowiedzialnej za kliknięcie w przycisk potwierdzający założenie konta/subskrypcję. Nie wiem co za leń nie dopisał tej jednej linijki, ale wszyscy poszli na kebsa i jesteś jedyną osobą, która może to naprawić. </li>
 <li>Stażysta piszący metodę <em>getMessageUrl </em>w klasie <em>EmailChecker.java</em> nie wiedział jak wygląda url do HTML&#39;owej wersji, pomożesz mu? Firma <em>JanuszPolExDevelopment &amp; Studenci</em> zawsze daje możliwość wyboru, więc jeśli odpowiesz &#34;nie&#34;, pan Zbysiu odprowadzi Cię do wyjścia. </li>
@@ -136,20 +137,26 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode)</pre>
       <google-codelab-step label="Walidacja layoutu" duration="0">
         <h2><strong>Czym jest Galen ?</strong></h2>
 <p><a href="http://galenframework.com/" target="_blank"><paper-button class="colored" raised>Galen framework</paper-button></a></p>
-<p>Galen jest bardzo prostym frameworkiem służącym do testowania wyglądu strony. Jego prostota polega na tym, że większość pracy niezbędna do uruchomienia testu sprowadza się do napisania pliku spec, który jest swoistą &#34;mapą strony&#34;. W pliku tym deklarujemy obiekty i relacje między nimi. </p>
+<p>Galen jest bardzo prostym frameworkiem służącym do testowania wyglądu strony. Jego prostota polega na tym, że większość pracy niezbędna do uruchomienia testu sprowadza się do napisania pliku spec, który jest swoistą &#34;mapą strony&#34;. W pliku tym deklarujemy obiekty i relacje między nimi. Zabierzmy się więc do roboty ...</p>
 <h2><strong>Przygotujmy plik spec dla naszego projektu..</strong></h2>
-<p><a href="http://galenframework.com/docs/reference-galen-spec-language-guide/" target="_blank"><paper-button class="colored" raised>Galen Specs Language Guide</paper-button></a></p>
-<p>W tym kroku zbudujemy plik spec dla otrzymanego w poprzednim kroku maila i umieścimy go w naszym projekcie. </p>
-<p>Podstawowe elementy pliku spec:</p>
-<p>Definicje obiektów</p>
-<ul>
-<li>id </li>
-<li>css </li>
-<li>Xpath</li>
-</ul>
+<aside class="warning"><p><strong>Ćwiczenie:</strong></p>
+<p>Sprawdź czy header strony ma wysokość 60 pixeli.</p>
+<p>Sprawdź czy niebieski header maila zawiera tekst &#34;Sehr geehrter StepStone Nutzer!&#34;</p>
+<p>Sprawdź czy niebieski header maila znajduje się poniżej headera strony w odległości zawierającej się w przedziale 10 - 14 pixeli.</p>
+</aside>
+<p><strong>Rozwiązanie:</strong></p>
+<p>1. W dowolnym edytorze tekstowym stwórz plik o nazwie email.gsec i zamieść go w projekcie w lokalizacji:</p>
+<p>steroids_workshops/src/test/resources/com/steroids/example/specs/</p>
+<p>2. W tym pliku zdefiniuj obiekty, które chcesz przetestować. Zacznij od słowa kluczowego objects:</p>
+<pre><code>  @objects</code></pre>
+<p>Teraz pora na zadeklarowanie obiektów. Możesz to zrobić używając id, css lub xpath. </p>
 <pre><code>  @objects
-   menu css ul.menu</code></pre>
-<p>Sekcje i tagi</p>
+     menu css ul.menu</code></pre>
+<p>To tylko przykład. Zrób to samo dla elementów maila, które chcemy przetestować (headery).</p>
+<p>3. Utwórz sekcję by nadać strukturę swoim poczynaniom. Robi się to tak:</p>
+<pre><code>  = Menu =</code></pre>
+<p>Utwórz sekcję dla naszego przykładu.</p>
+<p>4. A teraz mięcho. Opiszmy relacje między zadeklarowanymi elementami. Za chwilkę nasz test będzie gotowy do odpalenia. Poniżej masz bardzo prosty przykład. </p>
 <pre><code>  = Menu =
     @on mobile
         menu:
@@ -158,6 +165,13 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode)</pre>
     @on desktop
         menu:
             height 40 px </code></pre>
+<h2><strong>Hint:</strong></h2>
+<p>Do napisania testu z zadania wystarczą Ci słowa kluczowe:</p>
+<p>height</p>
+<p>text is</p>
+<p>below</p>
+<p>Po więcej zajrzyj tutaj:</p>
+<p><a href="http://galenframework.com/docs/reference-galen-spec-language-guide/" target="_blank"><paper-button class="colored" raised>Galen Specs Language Guide</paper-button></a>.</p>
 <h2>Test passed ... i co dalej ?</h2>
 <p>Sama informacja, że testy przeszły często nie wystarczy. </p>
 <p>Rzućmy okiem na :</p>
@@ -165,13 +179,15 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode)</pre>
 <li>Raport z testów</li>
 <li>Heat mapę</li>
 </ul>
+<h2><strong>Protip</strong></h2>
+<p>Zajrzyj do katalogu target i otwórz 1-confirmation-email-layout.html. Voila!</p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Walidacja wydajności" duration="0">
-        <p><strong>Wydajność ma znaczenie.</strong></p>
-<p><img style="max-width: 722.71px" src="img/946b5559ca555fdf.png"></p>
+        <p><img style="max-width: 785.50px" src="img/1890931285e17627.png"></p>
+<p><strong>Wydajność ma znaczenie.</strong></p>
 <p>Do zmierzenie wydajności naszej strony wykorzystamy <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigation_timing_API" target="_blank">Navigation Timing API</a>.</p>
 <p>Owe API dostępne jest we wszystkich współczesnych przeglądarkach, choć nadal zaskakująco dużo osób o nim nie słyszało. </p>
 <p><strong>Rozgrzewka:</strong></p>
@@ -184,12 +200,69 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode)</pre>
 </aside>
 <p>Atrybuty zdefiniowane w API:</p>
 <p><img style="max-width: 624.00px" src="img/85d75077954c6d1b.png"></p>
+<aside class="warning"><p><strong>Ćwiczenie:</strong></p>
+<p>Dodać step który zbierze informacje o wydajności ze strony na której aktualnie jest test.</p>
+<p>Wykorzystamy do tego:</p>
+<p><strong>JavascriptExecutor</strong> - natywny mechanizm Selnium pozwalający wykonać dowolny JavaScript na stronie. </p>
+<p><strong>Navigation Timing API</strong> - opisany wyżej</p>
+<p><strong>GSON</strong> - googlowska biblioteka do serializacji / deserializacji Jsonów</p>
+</aside>
+<p>Zacznijmy od dodania stepu.</p>
+<p>W pliku JobAgentConfirmation.feature dopisz na końcu </p>
+<pre><code>Then   I check performance</code></pre>
+<p>Następnie w klasie HomePageStep znajdź komentarz :</p>
+<pre><code>//TODO: wydajńość ma znaczenie</code></pre>
+<p>Utwórz metodę checkPerf. Metoda ma być publiczna i nie zwracać nic czyli typu void.</p>
+<pre><code>public void checkPerf() {
+}</code></pre>
+<p>Powinna też mieć referencję do stepu w feature file.  </p>
+<pre><code>@Then(&#34;^I check performance$&#34;)</code></pre>
+<p>W samej metodzie wywołaj metodę checkPerformance() z klasy HomePage.</p>
+<p>Tak, tej metody jeszcze nie ma, za chwilę ją napiszesz. </p>
+<p>Na tą chwilę powinno to wyglądać tak:</p>
+<pre><code> @Then(&#34;^I check performance$&#34;)
+  public void checkPerf() {
+    homePage.checkPerformance();
+  }</code></pre>
+<p>W klasie HomePage dodaj brakującą metodę checkPerformance():</p>
+<pre><code>public void checkPerformance() {}</code></pre>
+<p>W pierwszej kolejności musimy wykonać skrypt który wyciągnie dane o wydajności. </p>
+<p>Wykorzystamy do tego JavascriptExecutor - mechanizm wbudowany w Selenium służący włąśnie do wykonawania js&#39;ów na podczas testu. </p>
+<p>W metodzie checkPerformance() zainicjalizujmy JavascriptExecutora&#39;a dodając:</p>
+<pre><code>JavascriptExecutor js = (JavascriptExecutor) getDriver();</code></pre>
+<p>Nastętpnie wykonajmy skrypt, korzystając z metody ‘executeScript&#39;, jednocześnie zamieniając go na string&#39;a:<br></p>
+<pre><code>String timings =  
+js.executeScript(&#34;return (window.performance.timing)&#34;).toString();</code></pre>
+<p>Ok, mamy string&#39;a z czasami. Teraz wyciągnijmy konkretne wartości i dokonajmy potrzebnych obliczeń. </p>
+<pre><code>Gson gson = new Gson();
+Timings timingsJson = gson.fromJson(timings, Timings.class);
+long pageLoadTime = timingsJson.loadEventStart - timingsJson.navigationStart;
+long backendTime = timingsJson.responseStart - timingsJson.navigationStart;</code></pre>
+<p>Na koniec wyświetlmy wyniki naszych obliczeń. Na potrzeby warsztatów wyrzucimy je do konsoli. </p>
+<pre><code>logInfo(&#34;pageLoadTime: &#34; + pageLoadTime);
+logInfo(&#34;backendTime: &#34; + backendTime);</code></pre>
+<p>Całość powinna wyglądać tak:</p>
+<pre><code>  public void checkPerformance() {
+    JavascriptExecutor js = (JavascriptExecutor) getDriver();
+    String timings =  js.executeScript(&#34;return (window.performance.timing)&#34;).toString();
+    Gson gson = new Gson();
+    Timings timingsJson = gson.fromJson(timings, Timings.class);
+    long pageLoadTime = timingsJson.loadEventStart - timingsJson.navigationStart;
+    long backendTime = timingsJson.responseStart - timingsJson.navigationStart;
+    logInfo(&#34;pageLoadTime: &#34; + pageLoadTime);
+    logInfo(&#34;backendTime: &#34; + backendTime);
+  }</code></pre>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Piękna proza na zakończenie" duration="0">
-        <p>Mało? Głodny wiedzy, a może masz z czymś problem? Tutaj możesz znaleźć kontakt do nas. </p>
+        <p>Podsumowując: napisaliście kawałek fajnego kodu, który możecie zabrać do firmy i coś z nim zrobić. Sprawdzić maila używając Inbucketa, layout Galenem, performance Navigation Timing API. </p>
+<p>To jednak wierzchołek góry lodowej. Pod Selenium można podpiąć takie rzeczy jak notyfikacje na Slacku, przechwytywanie requestów http (tracking) czy wysyłanie danych performance do systemów monitorujących i wiele więcej. </p>
+<p>Mało? Głodny wiedzy, a może masz z czymś problem? Tutaj możesz znaleźć kontakt do nas i obserwować terminy następnych warsztatów.</p>
+<p>Tomek: <a href="http://www.linkedin.com/in/jaceknosibutynarzepy" target="_blank">www.linkedin.com/in/jaceknosibutynarzepy</a></p>
+<p>Jacek: <a href="https://www.linkedin.com/in/tomektolama" target="_blank">www.linkedin.com/in/tomektolama</a></p>
+<p>Michalina: <a href="http://www.linkedin.com/in/jacekitomekmuszadorosnac" target="_blank">www.linkedin.com/in/jacekitomekmuszadorosnac</a> </p>
 
 
       </google-codelab-step> -->
