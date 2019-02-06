@@ -8,12 +8,12 @@
   <meta charset="UTF-8">
   <title>Automatyczne testy funkcjonalne na sterydach</title>
   <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-  <link rel="import" href="elements/codelab.html">
+  <link rel="import" href="../../elements/codelab.html">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <style is="custom-style">
     body {
       font-family: "Roboto",sans-serif;
-      background: var(--google-codelab-background, --paper-grey-300);
+      background: var(--google-codelab-background, #F8F9FA);
     }
   </style>
   
@@ -27,22 +27,25 @@
       <google-codelab-step label="Wstęp" duration="0">
         <p>Ludziska słuchajta! Tu jest zarąbisty wstęp do warsztatów. Piękna proza o tym czego się nauczycie. I coś o nas. Strzeliliśmy też fancy foty i krótkie info skąd i dokąd zmierzamy.</p>
 <table>
-<tr><td colspan="1" rowspan="1"><p><img style="max-width: 142.50px" src="img/39359abe46717313.png"></p>
-</td><td colspan="1" rowspan="1"><p><img style="max-width: 142.50px" src="img/2f7f80f2dd70179.png"></p>
-</td><td colspan="1" rowspan="1"><p><img style="max-width: 142.50px" src="img/5520e02be2f8c52d.png"></p>
+<tr><td colspan="1" rowspan="1"><p><img style="max-width: 145.00px" src="img/da909f7259c824fb.png"></p>
+</td><td colspan="1" rowspan="1"><p><img style="max-width: 143.00px" src="img/20c966dcb40826a0.png"></p>
+</td><td colspan="1" rowspan="1"><p><img style="max-width: 130.00px" src="img/fefb95e9f6bcc0fc.png"></p>
+</td><td colspan="1" rowspan="1"><p><img style="max-width: 129.98px" src="img/5f992b9affdf3287.png"></p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>Michalina Ożibko</p>
 </td><td colspan="1" rowspan="1"><p>Tomasz Wojciechowski</p>
+</td><td colspan="1" rowspan="1"><p>Oskar Kleska</p>
 </td><td colspan="1" rowspan="1"><p>Jacek Jaworski</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>Sukienki i pączki</p>
 </td><td colspan="1" rowspan="1"><p>Ruda broda i wyjątkowo </p>
 <p>czuły bullshitometr</p>
+</td><td colspan="1" rowspan="1"><p>Kleskę przekuł w sukces</p>
 </td><td colspan="1" rowspan="1"><p>Jakość i League of Legends</p>
 </td></tr>
 </table>
 <h2><strong>Co to za ludzie?</strong></h2>
-<p>Jesteśmy trójką zapaleńców, pracujących w firmie, która rozwiązaniami jakościowymi ściga takich gigantów jak Google czy Facebook. Nie akceptujemy statusu quo.</p>
+<p>Jesteśmy czwórką zapaleńców, pracujących w firmie, która rozwiązaniami jakościowymi ściga takich gigantów jak Google czy Facebook. Nie akceptujemy statusu quo.</p>
 <h2><strong>Co zrobisz</strong></h2>
 <table>
 <tr><td colspan="1" rowspan="1"><p>W trakcie warsztatów wzbogacisz wcześniej przygotowany projekt oparty o Selenium o :</p>
@@ -84,8 +87,9 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode)</pre>
 <ul>
 <li>Do tego potrzebujemy plugin do IDE odpowiedzialny za ogarnięcie BDD i Cucumbera </li>
 <li>Po uruchomieniu IDE użyj skrótu klawiszowego ⇧⌘A (⇧+Ctrl+A dla Windowsa) i wyszukaj menu ‘Plugins&#39;. </li>
-<li>W wyszukiwarce pluginów wpisz ‘Cucumber&#39;, następnie kliknij ‘Search in repositories&#39;. Zainstaluj ‘Cucumber for Java&#39;<img style="max-width: 1005.67px" src="img/7b4e70e1dafe2328.png"></li>
+<li>W wyszukiwarce pluginów wpisz ‘Cucumber&#39;, następnie kliknij ‘Search in repositories&#39;. Zainstaluj ‘Cucumber for Java&#39;</li>
 </ul>
+<p><img style="max-width: 735.28px" src="img/7b4e70e1dafe2328.png"></p>
 <h2><strong>Repo:</strong></h2>
 <p>Projekt, na którym będziemy pracować znajduje się tu:</p>
 <p><a href="https://github.com/jaworj/steroids_workshops/tree/start" target="_blank"><paper-button class="colored" raised>Selenium On Steroids Github Repo</paper-button></a></p>
@@ -120,7 +124,8 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode)</pre>
 </td></tr>
 </table>
 <h2><strong>I mam to wszystko sprawdzać manualnie...? </strong></h2>
-<p>Oczywiście, że nie! Inbucket Java Client, który napisaliśmy, umożliwia Ci komunikację z serwerem Inbucketa i... używanie go w testach. <a href="https://github.com/stepstone-tech/inbucket-java-client" target="_blank"><paper-button class="colored" raised>Inbucket Java Client</paper-button></a></p>
+<p>Oczywiście, że nie! Inbucket Java Client, który napisaliśmy, umożliwia Ci komunikację z serwerem Inbucketa i... używanie go w testach. </p>
+<p><a href="https://github.com/stepstone-tech/inbucket-java-client" target="_blank"><paper-button class="colored" raised>Inbucket Java Client</paper-button></a></p>
 <h2><strong>Email as page</strong></h2>
 <p>Pisanie testów Selenium dla statycznej strony jest bardzo proste, prawda? Czy w przypadku emaila wygląda to inaczej? Nie, jeśli używasz Inbucketa. </p>
 <p>Widok HTML w Inbuckecie pozwala na wyświetlenie emaila dokładnie tak samo, jak każdej innej statycznej strony. To znaczy, że jeśli używasz <a href="https://www.pluralsight.com/guides/software-engineering-best-practices/getting-started-with-page-object-pattern-for-your-selenium-tests" target="_blank">PageObjectPattern</a>, musisz utworzyć PageObject dla emaila, którego chcesz sprawdzić. Przykład? Plik JobAgentConfirmationEmailPage w warsztatowym repo. </p>
@@ -140,7 +145,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode)</pre>
 <p>Galen jest bardzo prostym frameworkiem służącym do testowania wyglądu strony. Jego prostota polega na tym, że większość pracy niezbędna do uruchomienia testu sprowadza się do napisania pliku spec, który jest swoistą &#34;mapą strony&#34;. W pliku tym deklarujemy obiekty i relacje między nimi. Zabierzmy się więc do roboty ...</p>
 <h2><strong>Przygotujmy plik spec dla naszego projektu..</strong></h2>
 <aside class="warning"><p><strong>Ćwiczenie:</strong></p>
-<p>Sprawdź czy header strony ma wysokość 60 pixeli.</p>
+<p>Sprawdź czy header strony ma wysokość 54 pixeli.</p>
 <p>Sprawdź czy niebieski header maila zawiera tekst &#34;Sehr geehrter StepStone Nutzer!&#34;</p>
 <p>Sprawdź czy niebieski header maila znajduje się poniżej headera strony w odległości zawierającej się w przedziale 10 - 14 pixeli.</p>
 </aside>
@@ -211,7 +216,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode)</pre>
 <p>W pliku JobAgentConfirmation.feature dopisz na końcu </p>
 <pre><code>Then   I check performance</code></pre>
 <p>Następnie w klasie HomePageStep znajdź komentarz :</p>
-<pre><code>//TODO: wydajńość ma znaczenie</code></pre>
+<pre><code>//TODO: wydajność ma znaczenie</code></pre>
 <p>Utwórz metodę checkPerf. Metoda ma być publiczna i nie zwracać nic czyli typu void.</p>
 <pre><code>public void checkPerf() {
 }</code></pre>
@@ -260,9 +265,10 @@ logInfo(&#34;backendTime: &#34; + backendTime);</code></pre>
         <p>Podsumowując: napisaliście kawałek fajnego kodu, który możecie zabrać do firmy i coś z nim zrobić. Sprawdzić maila używając Inbucketa, layout Galenem, performance Navigation Timing API. </p>
 <p>To jednak wierzchołek góry lodowej. Pod Selenium można podpiąć takie rzeczy jak notyfikacje na Slacku, przechwytywanie requestów http (tracking) czy wysyłanie danych performance do systemów monitorujących i wiele więcej. </p>
 <p>Mało? Głodny wiedzy, a może masz z czymś problem? Tutaj możesz znaleźć kontakt do nas i obserwować terminy następnych warsztatów.</p>
-<p>Tomek: <a href="http://www.linkedin.com/in/jaceknosibutynarzepy" target="_blank">www.linkedin.com/in/jaceknosibutynarzepy</a></p>
+<p>Tomek: <a href="https://www.linkedin.com/in/beardedqa/" target="_blank">https://www.linkedin.com/in/beardedqa/</a></p>
 <p>Jacek: <a href="https://www.linkedin.com/in/tomektolama" target="_blank">www.linkedin.com/in/tomektolama</a></p>
 <p>Michalina: <a href="http://www.linkedin.com/in/jacekitomekmuszadorosnac" target="_blank">www.linkedin.com/in/jacekitomekmuszadorosnac</a> </p>
+<p>Oskar: <a href="http://www.linkedin.com/in/oskar-kleska" target="_blank">www.linkedin.com/in/oskar-kleska</a></p>
 
 
       </google-codelab-step>
